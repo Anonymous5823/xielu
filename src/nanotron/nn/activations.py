@@ -31,8 +31,8 @@ class XIELU(nn.Module):
         super(XIELU, self).__init__()
         self.beta = beta
         # For proper saving and loading from checkpoint
-        self.alpha_p = NanotronParameter(torch.tensor(torch.log(torch.tensor(alpha_p_init) - 1)).unsqueeze(0))
-        self.alpha_n = NanotronParameter(torch.tensor(torch.log(torch.tensor(alpha_n_init - self.beta) - 1)).unsqueeze(0))
+        self.alpha_p = NanotronParameter(torch.tensor(torch.log(torch.tensor(alpha_p_init))  -  1).unsqueeze(0))
+        self.alpha_n = NanotronParameter(torch.tensor(torch.log(torch.tensor(alpha_n_init - self.beta)) - 1).unsqueeze(0))
         self.eps = torch.tensor(eps)
 
     def forward(self, x):
