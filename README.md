@@ -1,10 +1,12 @@
 ## Additional Comments
 
+Reference code for xIELU (pronounced like "shear lu"), based on the nanotron codebase https://github.com/huggingface/nanotron
+
 /src/nanotron/nn/activations.py - contains the code for xIELU
 
-/src/nanotron/models/llama.py - contains the code for llama transformer architecture
+/src/nanotron/models/llama.py - contains the code for Llama transformer architecture
 
-/configs/ - contains pretraining configs for 1.1B and 3B models on 125B tokens
+/configs/ - contains pretraining configs for 1.1B and 3B models on 125B tokens using WSD
 
 <h1 align="center">⚡️ Nanotron</h1>
 
