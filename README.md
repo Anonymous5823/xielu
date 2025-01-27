@@ -1,8 +1,8 @@
 ## Additional Comments
 
-Reference code for xIELU (pronounced like "shear lu"), based on the nanotron codebase https://github.com/huggingface/nanotron
+Reference code for xIELU (pronounced like "shear lu") and xIPReLU (prounounced like "zip relu"), based on the nanotron codebase https://github.com/huggingface/nanotron
 
-/src/nanotron/nn/activations.py - contains the code for xIELU
+/src/nanotron/nn/activations.py - contains the code for xIELU and xIPReLU
 
 /src/nanotron/models/llama.py - contains the code for Llama transformer architecture
 
