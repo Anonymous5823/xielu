@@ -8,7 +8,28 @@ Reference code for xIELU (pronounced like "shear lu") and xIPReLU (prounounced l
 
 /configs/ - contains pretraining configs for 1.1B and 3B models on 125B tokens using WSD
 
-/xielu-cuda/ - kernel fusion for xIELU that is under development. Currently, it is only 15% faster on GH200 GPUs than the pytorch implementation relying on torch.compile() and will likely require additional GH200 specific optimisations. The speedup is larger on other GPUs.
+/xielu-cuda/ - A kernel fusion implementation for xIELU is under development. Currently achieves 1.75x speedup compared to the PyTorch implementation relying on torch.compile(), but needs additional modifications to support half/bf16 precisions.
+
+## Fused xIELU Benchmark Results
+
+| Model | Batch | SeqLen | HiddenDim | Fwd (ms) | Bwd (ms) | Speedup |
+|-------|--------|---------|------------|-----------|-----------|---------|
+| XIELU-Python | 4 | 16 | 128 | 0.06 | 0.15 | - |
+| XIELU-Cuda | 4 | 16 | 128 | 0.04 | 0.09 | 1.63x |
+| XIELU-Python | 8 | 32 | 256 | 0.07 | 0.19 | - |
+| XIELU-Cuda | 8 | 32 | 256 | 0.04 | 0.09 | 1.85x |
+| XIELU-Python | 16 | 32 | 128 | 0.07 | 0.19 | - |
+| XIELU-Cuda | 16 | 32 | 128 | 0.04 | 0.10 | 1.73x |
+| XIELU-Python | 16 | 64 | 512 | 0.06 | 0.27 | - |
+| XIELU-Cuda | 16 | 64 | 512 | 0.06 | 0.14 | 1.70x |
+| XIELU-Python | 32 | 128 | 1024 | 0.09 | 0.36 | - |
+| XIELU-Cuda | 32 | 128 | 1024 | 0.07 | 0.15 | 2.00x |
+| XIELU-Python | 5 | 4096 | 8192 | 0.54 | 1.91 | - |
+| XIELU-Cuda | 5 | 4096 | 8192 | 0.33 | 1.07 | 1.75x |
+| XIELU-Python | 50 | 4096 | 8192 | 4.89 | 18.96 | - |
+| XIELU-Cuda | 50 | 4096 | 8192 | 3.35 | 10.66 | 1.76x |
+
+The speedup is calculated based on the total time (Fwd + Bwd) of CUDA implementation compared to PyTorch for each configuration.
 
 <h1 align="center">⚡️ Nanotron</h1>
 
