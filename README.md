@@ -8,7 +8,7 @@ Reference code for xIELU (pronounced like "shear lu") and xIPReLU (prounounced l
 
 /configs/ - contains pretraining configs for 1.1B and 3B models on 125B tokens using WSD
 
-/xielu-cuda/ - kernel fusion for xIELU that is under development. On GH200, it is only 15% faster than the pytorch implementation relying on torch.compile() and will likely require additional GH200 specific optimisations. Speedup is larger on other GPUs.
+/xielu-cuda/ - kernel fusion for xIELU that is under development. Currently, it is only 15% faster on GH200 GPUs than the pytorch implementation relying on torch.compile() and will likely require additional GH200 specific optimisations. The speedup is larger on other GPUs.
 
 <h1 align="center">⚡️ Nanotron</h1>
 
