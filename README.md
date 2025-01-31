@@ -29,7 +29,7 @@ Reference code for xIELU (pronounced like "shear lu") and xIPReLU (prounounced l
 | XIELU-Python | 50 | 4096 | 8192 | 4.89 | 18.96 | - |
 | XIELU-Cuda | 50 | 4096 | 8192 | 3.35 | 10.66 | 1.76x |
 
-The speedup is calculated based on the total time (Fwd + Bwd) of CUDA implementation compared to PyTorch for each configuration.
+The speedup is calculated based on the total time (Fwd + Bwd) of CUDA implementation compared to the PyTorch implementation relying on torch.compile() for each configuration.
 
 <h1 align="center">⚡️ Nanotron</h1>
 
