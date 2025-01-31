@@ -41,7 +41,8 @@ class XIELU(nn.Module):
         alpha_n = self.beta + F.softplus(self.alpha_n)
         return torch.where(x > 0,
                            alpha_p * x * x + self.beta * x,
-                           torch.exp(torch.log(alpha_n) + torch.min(x, self.eps)) - alpha_n - alpha_n * x + self.beta * x)
+                           alpha_n * torch.expm1(torch.min(x, self.eps)) - alpha_n * x + self.beta * x)
+                           
 
 
 # Based on integral of PReLU
@@ -49,6 +50,7 @@ class XIPReLU(nn.Module):
     def __init__(self, alpha_p_init=0.8, alpha_n_init=0.8, beta=0.5):
         super(XIPReLU, self).__init__()
         self.beta = beta
+        # For proper saving and loading from checkpoint
         self.alpha_p = NanotronParameter(torch.log(torch.exp(torch.tensor(alpha_p_init)) - 1).unsqueeze(0))
         self.alpha_n = NanotronParameter(torch.log(torch.exp(torch.tensor(alpha_n_init)) - 1).unsqueeze(0))
 
