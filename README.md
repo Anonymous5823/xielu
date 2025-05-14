@@ -2,11 +2,11 @@
 
 Reference code for xIELU, xIPReLU and xIEP, based on the nanotron codebase https://github.com/huggingface/nanotron
 
-/src/nanotron/nn/activations.py - contains the code for xIELU and xIPReLU
+/src/nanotron/nn/activations.py - contains the code for xIELU, xIPReLU and xIEP
 
 /src/nanotron/models/llama.py - contains the code for Llama transformer architecture
 
-/configs/ - contains pretraining configs for 1.1B and 3B models on 125B tokens using WSD
+/configs/ - contains pretraining configs for 1.1B models on 125B tokens using WSD
 
 /xielu-cuda/ - CUDA implementation for xIELU, supporting both BF16 and FP32
 
